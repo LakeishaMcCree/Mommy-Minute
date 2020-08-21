@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
 
-    before_action :set_book
+    before_action :set_blog, except: [:index, :new, :create]
 
     def index 
         @blogs = Blog.all 
