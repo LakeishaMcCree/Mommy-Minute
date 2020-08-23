@@ -11,7 +11,7 @@ class BlogsController < ApplicationController
     end
 
     def show #/blogs/:id
-        @blog = Blog.find_by_id(params[:id])
+        #@blog = Blog.find_by_id(params[:id])
     end
 
     def new
@@ -19,9 +19,9 @@ class BlogsController < ApplicationController
     end
 
     def create
-        @blog = Blog.new(blog_params)
+        @blog = current_user.blogs.build(blog_params)
         if @blog.save
-            redirect_to blogs_path
+            redirect_to user_blogs_path(current_user)
         else
             render :new
         end
@@ -33,7 +33,7 @@ class BlogsController < ApplicationController
 
     def update #patch /blogs/:id
         if @blog.update(blog_params)
-            redirect_to blog_path(@blog) #_path - route helper /blogs/id
+            redirect_to user_blog_path(current_user, @blog) #_path - route helper /blogs/id
         else
             render :edit
         end
@@ -41,7 +41,7 @@ class BlogsController < ApplicationController
 
     def destroy #delete /blogs/:id
         @blog.destroy
-        redirect_to blogs_path
+        redirect_to user_blogs_path(current_user)
     end
 
     private

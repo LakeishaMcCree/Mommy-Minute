@@ -1,4 +1,6 @@
 class Blog < ApplicationRecord
+    belongs_to :user
+    has_many :comments, dependent: :destroy
 
     scope :published, -> { where.not(published_date: nil) }
     scope :recent_published_blogs, -> { self.published.where("published_date > ?", 5.days.ago) }
@@ -9,4 +11,5 @@ class Blog < ApplicationRecord
 
     validates_presence_of :title, :content
     validates_uniqueness_of :title
+
 end

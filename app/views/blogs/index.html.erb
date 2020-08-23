@@ -1,15 +1,17 @@
 <h1>Mommy Minute Blog!</h1>
 
-<%= form_tag(blogs_path, method: 'get') do %> 
-        <%= text_field_tag :term, nil, id: "Search" %>
+<%= form_tag(user_blogs_path(current_user), method: "get") do %> 
+        <%= text_field_tag :term, nil, id: "Search", placeholder: "enter search term" %>
     <%= submit_tag "Search"%>
 <%end%>
 
 <% @blogs.each do |blog| %>
     <div>
-        <h3><%= blog.title %></h3>
-        <p><%= blog.content %></p>
+        <h3><%= link_to blog.title %></h3>
         <p><%= blog.published_date %></p>
+    </div>
+    <div class="comment-count">
+        <%= blog.comments.count %>
     </div>
 <% end %>
 
