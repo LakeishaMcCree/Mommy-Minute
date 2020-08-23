@@ -1,1 +1,9 @@
-<h1> Blogs! </h1>
+<h1>Mommy Minute Blogs!</h1>
+
+<% @blogs.each do |blog| %>
+    <div>
+        <p>---------</p>
+        <p>Blog Title: <%= link_to blog.title, blog_path(blog) %></p>
+    </div>
+<% end %>
+

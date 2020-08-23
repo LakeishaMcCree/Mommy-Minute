@@ -1,0 +1,33 @@
+<%= form_for blog do |f| %> <!-- f is for form builder -->
+    <div>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+    </div>
+    <br> 
+
+    <div>
+        <%= f.label :content %>
+        <%= f.text_field :content %>
+    </div>
+    <br>
+
+    <div>
+        <%= f.label :published_date %>
+        <%= f.text_field :published_date%>
+    </div>
+    <br> 
+
+    <div>
+        <%= f.label :author %>
+        <%= f.text_field :author %>
+    </div>
+    <br>
+
+    <div>
+        <%= f.label :mood %>
+        <%= f.text_field :mood %>
+    </div>
+    <br>
+
+    <%= f.submit button_name %>
+<% end %>
