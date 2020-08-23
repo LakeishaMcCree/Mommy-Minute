@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
   root to: "static#home"
+
+  #resources :users
+
+  get "/signup", to: "users#new", as: "signup" #signup_path or signup_url
+  post "/signup", to: "users#create"
+
+  delete "/logout", to: "sessions#destroy", as: "logout"
+
   resources :blogs # index new create show edit update destroy
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
