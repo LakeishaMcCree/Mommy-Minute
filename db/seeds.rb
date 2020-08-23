@@ -11,5 +11,5 @@
 #end
 
 
-Blog.create(title: "The random title", content: "This great stuff")
-puts "Finished Seeding Database"
+#Blog.create(title: "The random title", content: "This great stuff")
+#puts "Finished Seeding Database"

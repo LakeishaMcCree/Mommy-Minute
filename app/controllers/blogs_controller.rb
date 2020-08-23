@@ -10,6 +10,10 @@ class BlogsController < ApplicationController
         end
     end
 
+    def show #/blogs/:id
+        @blog = Blog.find_by_id(params[:id])
+    end
+
     def new
         @blog = Blog.new
     end
@@ -23,12 +27,8 @@ class BlogsController < ApplicationController
         end
     end
 
-    def show #/blogs/:id
-        
-    end
-
     def edit #/blogs/:id/edit
-
+        @blog = Blog.find_by_id(params[:id])
     end
 
     def update #patch /blogs/:id
