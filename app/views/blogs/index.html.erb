@@ -1,9 +1,15 @@
-<h1>Mommy Minute Blogs!</h1>
+<h1>Mommy Minute Blog!</h1>
+
+<%= form_tag(blogs_path, method: 'get') do %> 
+        <%= text_field_tag :term, nil, id: "Search" %>
+    <%= submit_tag "Search"%>
+<%end%>
 
 <% @blogs.each do |blog| %>
     <div>
-        <p>---------</p>
-        <p>Blog Title: <%= link_to blog.title, blog_path(blog) %></p>
+        <h3><%= blog.title %></h3>
+        <p><%= blog.content %></p>
+        <p><%= blog.published_date %></p>
     </div>
 <% end %>
 

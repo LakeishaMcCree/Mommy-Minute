@@ -3,7 +3,11 @@ class BlogsController < ApplicationController
     before_action :set_blog, except: [:index, :new, :create]
 
     def index 
-        @blogs = Blog.all 
+        if params[:term] 
+            @blogs = Blog.search(params[:term])
+        else
+            @blogs = Blog.sorted_published_blogs 
+        end
     end
 
     def new
@@ -13,7 +17,7 @@ class BlogsController < ApplicationController
     def create
         @blog = Blog.new(blog_params)
         if @blog.save
-            redirect_to books_path
+            redirect_to blogs_path
         else
             render :index
         end
