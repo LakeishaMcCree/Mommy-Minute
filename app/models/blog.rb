@@ -1,6 +1,6 @@
 class Blog < ApplicationRecord
 
-    validates_presence_of :title, :content, :published_date
+    
 
     scope :published, -> { where.not(published_date: nil) }
     scope :recent_published_blogs, -> { self.published.where("published_date > ?", 5.days.ago) }
@@ -10,4 +10,6 @@ class Blog < ApplicationRecord
 
     scope :search, -> (term) { self.published.where("title LIKE ?", "%#{term}%")}
 
+    validates_presence_of :title, :content
+    validates_uniqueness_of :title
 end
