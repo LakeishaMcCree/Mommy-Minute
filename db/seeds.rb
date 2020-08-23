@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+(1..(1..100).to_a.sample).to_a.each do |num|
+    Blog.create(title: "Blog #{num}", content: "Some amazing content #{num}.")
+end
+
+puts "Finished Seeding Database"
